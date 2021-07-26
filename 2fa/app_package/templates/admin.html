@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="content-section">
+            <div class="col-lg-6 col-md-10">
+            {%for user in users%}
+            <div class="card">
+                <div class="card-header">
+                   <span><strong>{{user.username}}</strong></span> 
+                   <p><strong>{{user.email}}</strong></p>
+                   <form action="{{url_for('user_info',user_id=user.id)}}" method="post">
+					<input type="submit" class="btn btn-dark btn-sm" value="View User">
+                   	</input>
+                   </form>
+               </div>
+            </div>
+        {%endfor%}
+</div>
+</div>
+{%endblock%}

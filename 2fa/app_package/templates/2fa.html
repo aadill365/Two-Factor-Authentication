@@ -1,0 +1,24 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="col-lg-6 col-md-10">
+	<h1>Two Factor Authentication Setup</h1>
+    <p>You are almost done! Please start any Authenticator app on your smartphone and scan the following QR Code with it:</p>
+    <p><img id="qrcode" src="{{ url_for('qrcode')}}"></p>
+
+    <p>You can paste this token in your authenticator app</p>
+    <p class="alert alert-danger"><strong>{{token}}</strong></p> 
+    {%if current_user.is_authenticated%}
+        <p class="alert alert-info">Note: Don't share this token with any one else and write the token somewhere in the paper.<a href="{{url_for('home')}}">Continue</a></p>
+    {%else%}
+        <p class="alert alert-info">Note: Don't share this token with any one else and write the token somewhere in the paper.<a href="{{url_for('login')}}">You can now Login</a></p>
+        <form action="/twofactor" class="form" method='post'>
+            <div class="form-div">
+                <input type="text" name="token" class="form-input" placeholder=" ">
+                <label for="" class="form-label">Token</label>
+            </div>
+            <input type="submit" class="btn btn-danger w-100 btn-lg mt-4">
+        </form>
+    {%endif%}
+
+</div>
+{%endblock%}

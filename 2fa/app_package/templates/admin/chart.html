@@ -1,0 +1,64 @@
+{%extends 'admin/master.html'%}
+{%block title%}
+charts
+{%endblock%}
+{%block head_css%}
+{{super()}}
+{%endblock%}
+{%block body%}
+	<div class="row px-4">
+		<div class="col-lg-6 border bg-light">
+			<Canvas id='koseeke'></Canvas>
+			
+		</div>
+		<div class="col-lg-6">
+			
+		</div>
+	</div>
+	<script src="{{url_for('static',filename='vendor/chart.js/Chart.min.js')}}" charset="utf-8"></script>
+	<script>
+		function koseeke(){
+			var chart = new Chart("koseeke",{
+		type:"doughnut",
+		data:{
+		labels:{{labels | safe}},
+			datasets:[{
+				label:'koseeke',
+				data:{{data | safe}},
+      			backgroundColor: {{bg | safe}}
+			}]
+				
+		},
+		options:{
+			title:{
+				display:true,
+				text:'Users'
+			},
+			// legend:{display:false},
+			// scales:{
+			// 	yAxes:[{
+			// 		ticks:{
+			// 			beginAtZero:true
+			// 		}
+			// 	}]
+			// },
+			tooltips:{
+			backgroundColor:"rgba(255,255,255)",
+			displayColors:false,
+			bodyFontColor:'black',
+			titleFontColor:'black',
+			xPadding:15,
+			yPadding:15,
+			borderColor:'#dddfeb',
+			borderWidth:1
+
+		}
+		}
+
+	})
+		}
+		koseeke()
+	
+	</script>
+
+{%endblock%}

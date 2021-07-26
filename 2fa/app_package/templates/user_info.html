@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="col-lg-6 col-md-10">
+    <div class="card">
+        <div class="card-header">
+            <h3>User Information</h3>
+        </div>
+        <div class="card-body">
+            <p class="alert alert-info"><strong>username: {{user.username}}</strong></p>
+            <p class="alert alert-primary"><strong>Email: {{user.email}}</strong></p>
+            <p class="alert alert-danger"><strong>Passsword: {{user.password}}</strong></p>
+            <p class="alert alert-warning"><strong>Secret Key: {{user.secret_token}}</strong></p>
+            <p class="alert alert-success"><strong>User Id: {{user.id}}</strong></p>
+        </div>
+        <div class="card-footer">
+            <form action="{{url_for('admin_handle',user_id=user.id)}}" method="post">
+                <input type="submit" class="btn btn-danger btn-lg w-100" value="Delete User Account">
+                </input>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

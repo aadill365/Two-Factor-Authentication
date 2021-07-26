@@ -1,0 +1,59 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="content-setion">
+    
+		<form action="" class="form col-lg-6 col-md-10" method="post">
+            {{form.hidden_tag()}}
+			<legend><h2>Login</h2></legend>
+            <hr>
+			{%if form.email.errors%}
+            <div class="form-div">
+                {{form.email(class="form-input invalid",placeholder=" ")}}
+                {{form.email.label(class="form-label error-message")}}
+            </div>
+            {%for error in form.email.errors%}
+            <span class="error-message">{{error}}</span>
+            {%endfor%}
+            {%else%}
+            <div class="form-div">
+                {{form.email(class="form-input",placeholder=" ")}}
+                {{form.email.label(class="form-label")}}
+            </div>
+            {%endif%}
+
+            {%if form.password.errors%}
+            <div class="form-div">
+                {{form.password(class="form-input invalid",placeholder=" ")}}
+                {{form.password.label(class="form-label error-message")}}
+            </div>
+            {%for error in form.password.errors%}
+            <span class="error-message">{{error}}</span>
+            {%endfor%}
+            {%else%}
+            <div class="form-div">
+                {{form.password(class="form-input",placeholder=" ")}}
+                {{form.password.label(class="form-label")}}
+            </div>
+            {%endif%}
+
+            {%if form.secret_key.errors%}
+            <div class="form-div">
+                {{form.secret_key(class="form-input invalid",placeholder=" ")}}
+                {{form.secret_key.label(class="form-label error-message")}}
+            </div>
+            {%for error in form.secret_key.errors%}
+            <span class="error-message">{{error}}</span>
+            {%endfor%}
+            {%else%}
+            <div class="form-div">
+                {{form.secret_key(class="form-input",placeholder=" ")}}
+                {{form.secret_key.label(class="form-label")}}
+            </div>
+            {%endif%}
+            {{form.submit(class="btn btn-primary btn-lg w-100 btn-push")}}
+            <span>Dont have an account? <a href="{{url_for('register')}}">sign up</a> </span>
+			
+		</form>
+        </div>
+
+{%endblock%}

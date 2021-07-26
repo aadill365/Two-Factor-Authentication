@@ -1,0 +1,8 @@
+{%extends "base.html"%}
+
+{%block content%}
+{%if current_user.is_authenticated%}
+<h2>{{current_user.username}}</h2>
+{%endif%}
+<h1>Home Page</h1>
+{%endblock%}

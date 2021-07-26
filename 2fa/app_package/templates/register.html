@@ -1,0 +1,69 @@
+{%extends "base.html"%}
+{%block content%}
+        <form action="" method="post" class="form col-lg-6 col-md-10">
+            {{form.hidden_tag()}}
+            <legend><h2>Register</h2></legend>
+            <hr>
+            {%if form.username.errors%}
+            <div class="form-div">
+                {{form.username(class="form-input invalid",placeholder=" ")}}
+                {{form.username.label(class="form-label error-message")}}
+            </div>
+            {%for error in form.username.errors%}
+            <span class="error-message">{{error}}</span>
+            {%endfor%}
+            {%else%}
+            <div class="form-div">
+                {{form.username(class="form-input",placeholder=" ")}}
+                {{form.username.label(class="form-label")}}
+            </div>
+            {%endif%}
+
+            {%if form.email.errors%}
+            <div class="form-div">
+                {{form.email(class="form-input invalid",placeholder=" ")}}
+                {{form.email.label(class="form-label error-message")}}
+            </div>
+            {%for error in form.email.errors%}
+            <span class="error-message">{{error}}</span>
+            {%endfor%}
+            {%else%}
+            <div class="form-div">
+                {{form.email(class="form-input",placeholder=" ")}}
+                {{form.email.label(class="form-label")}}
+            </div>
+            {%endif%}
+
+            {%if form.password.errors%}
+            <div class="form-div">
+                {{form.password(class="form-input invalid",placeholder=" ")}}
+                {{form.password.label(class="form-label error-message")}}
+            </div>
+            {%for error in form.password.errors%}
+            <span class="error-message">{{error}}</span>
+            {%endfor%}
+            {%else%}
+            <div class="form-div">
+                {{form.password(class="form-input",placeholder=" ")}}
+                {{form.password.label(class="form-label")}}
+            </div>
+            {%endif%}
+
+            {%if form.confirm_password.errors%}
+            <div class="form-div">
+                {{form.confirm_password(class="form-input invalid",placeholder=" ")}}
+                {{form.confirm_password.label(class="form-label error-message")}}
+            </div>
+            {%for error in form.confirm_password.errors%}
+            <span class="error-message">{{error}}</span>
+            {%endfor%}
+            {%else%}
+            <div class="form-div">
+                {{form.confirm_password(class="form-input",placeholder=" ")}}
+                {{form.confirm_password.label(class="form-label")}}
+            </div>
+            {%endif%}
+            {{form.submit(class="btn btn-primary btn-lg w-100 btn-push")}}
+            <span>Already have an account? <a href="{{url_for('login')}}">Sign In</a></span>
+        </form>
+{%endblock%}
